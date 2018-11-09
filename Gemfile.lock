@@ -1,0 +1,21 @@
+GIT
+  remote: https://github.com/ppadron/mail
+  revision: f59149903d79a02fa05579a2441c813db12fd9d6
+  branch: fix_multipart_splitting_without_crlf_only_lf
+  specs:
+    mail (2.8.0.edge)
+      mini_mime (>= 0.1.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mini_mime (1.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mail!
+
+BUNDLED WITH
+   1.16.4

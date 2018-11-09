@@ -1,0 +1,1474 @@
+Delivered-To: fbl@templateria.com
+Received: by 2002:a17:906:a55:0:0:0:0 with SMTP id x21-v6csp1600553ejf;
+        Sun, 4 Nov 2018 05:57:15 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fFdeqA4j7I3CmvLyztWXgX81buxovPFcbSUz/ZEfSFf0zZb01igHvsjrs4FQRNMnfA24Vu
+X-Received: by 2002:a17:906:6411:: with SMTP id d17-v6mr11052148ejm.73.1541339835727;
+        Sun, 04 Nov 2018 05:57:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541339835; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Hqh1jlm3s6oq94vc7gTT/rrYuyhFgP8qgocR6jlHtMtHJv9dcflSie76NKu4JvUaJl
+         YNE8Gw9noSY9q9LNZC5/oRU9mf5dntwc3Kj78bydXhHbHwL1lWzVzmKV4zox/JSLo+SC
+         uDauNwZXeaP0ghDEvlLzV6Ygj9vgdlw22tJ05E+No6JI7vuEpp6mm/9i+tJ/XTO5/BwB
+         alKAxlWBT9IYsW3vmdMbEmfG1MwPhQuNWE7gqUUx0kfgS07lgbe6VbFzIaZirdRNjmBj
+         dKjzYGqCUltdVGE1ArFqwFE6yUDHunUU3vgKITDaFp7d/sqdJcJ2jRUMsI9+RScQ2eHX
+         jNXA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:date:from:subject:to:message-id:dkim-signature
+         :dkim-filter;
+        bh=Fiqt8gFqeA8t/US6L0lfPeJa3RNxfSPBeHcLC9emwYI=;
+        b=wGXT3p00IC4n+PsokHV+68prAYxrC99EavCBhHFEeSqOqzFNh+G4CiNxhYqdzpw4gX
+         nRSYc/1MZBqMGzL5GU5eFb1+Fb7aHzR9RNJymA1RQbUrOVeyGWucgGV/FALyzqkuafaI
+         +2wmdVT4pEy1yWdc63LRSWOizRH5W9MzEX3iIFoU4fo6sreCL1RG5uInbjqFoydQpdYf
+         M9FnnQvfWzHuPbpTOX0tdwhAgjWCxFhDglPSaH4TBc7bGIXtN2nwnQifRpcS2w8d4FKH
+         uShCLde9e8BKj0eCc1rOdKMfmISb7XLSNPdKS6OT6FLVokK2LFDHvgOUNa6fWxCuhlFd
+         qGIQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@senderscore.net header.s=081107 header.b=W4CNBRB3;
+       spf=neutral (google.com: 66.45.29.177 is neither permitted nor denied by best guess record for domain of fbl@bounce.mailstream.senderscore.net) smtp.mailfrom=fbl@bounce.mailstream.senderscore.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=senderscore.net
+Return-Path: <fbl@bounce.mailstream.senderscore.net>
+Received: from mrfbl02-den.returnpath.net (mrfbl02-den.returnpath.net. [66.45.29.177])
+        by mx.google.com with ESMTPS id m35-v6si209350ede.157.2018.11.04.05.57.15
+        for <fbl@templateria.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Nov 2018 05:57:15 -0800 (PST)
+Received-SPF: neutral (google.com: 66.45.29.177 is neither permitted nor denied by best guess record for domain of fbl@bounce.mailstream.senderscore.net) client-ip=66.45.29.177;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@senderscore.net header.s=081107 header.b=W4CNBRB3;
+       spf=neutral (google.com: 66.45.29.177 is neither permitted nor denied by best guess record for domain of fbl@bounce.mailstream.senderscore.net) smtp.mailfrom=fbl@bounce.mailstream.senderscore.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=senderscore.net
+Received: from localhost (unknown [10.252.33.157]) by mrfbl02-den.returnpath.net (Postfix) with ESMTP id 820FE4A0E0C for <fbl@templateria.com>; Sun,
+  4 Nov 2018 06:57:13 -0700 (MST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mrfbl02-den.returnpath.net 820FE4A0E0C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=senderscore.net; s=081107; t=1541339833; i=@senderscore.net; bh=pPhIL4C/7XGlkW2ksgeRtlG/gyMNBtt8f58feHXWlWo=; h=To:Subject:From:Date:From; b=W4CNBRB3Q5IyLBmd06lT+1lEszweJEgGmgqMBrGgA2tQpqynq59HnjgwvT0ZfIEbt
+	 CeYnzMSzxKFMQxVb2qjCb3Qq9vkX/OLbNOpnYjptlj3vY7xJiRqdUameqbXEzWs31T
+	 qa7JEWDUVTQFNJ1/RLY7X6M5I3JMo+42Tuablnxg=
+Content-Type: multipart/report; report-type=feedback-report; boundary=3d7f9dfde9033c81f88b313548a712c8bddc515cd137be3101a93c020352
+Message-Id: <01CVFG6RXQTWYX5WG8G6Q6WZXJ.fbl@bounce.mailstream.senderscore.net>
+To: fbl@templateria.com
+Subject: UOL Abuse Report
+From: UOL FBL Service <feedbackloop@uolfbl.senderscore.net>
+Date: Sun, 04 Nov 2018 13:57:13 +0000
+Mime-Version: 1.0
+X-Rp-Fbl: type=arf;
+
+--3d7f9dfde9033c81f88b313548a712c8bddc515cd137be3101a93c020352
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+This is a UOL Abuse Report for an email message received from domain postka=
+rto.com.br, IP 163.172.239.3, on Mon, 29 Oct 2018 13:04:42 +0000.
+
+--3d7f9dfde9033c81f88b313548a712c8bddc515cd137be3101a93c020352
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: message/feedback-report
+
+
+--3d7f9dfde9033c81f88b313548a712c8bddc515cd137be3101a93c020352
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: message/rfc822
+
+Return-Path: <return-4027-default20445-795593-3d8d2a=2@postkarto.com.br>
+Received: from a2-sumeria4-1 (a2-sumeria4.host.intranet [10.129.134.106])
+	 by cyruslmtpafil37-a with LMTPA;
+	 Mon, 29 Oct 2018 10:09:29 -0300
+Received: from smtp1-8.postkarto.com.br (smtp1-8.postkarto.com.br [163.172.239.3]) by a2-silver18.bol.com.br (Postfix) with ESMTP id 42kFLF2W4MzKLKng for <bf2ae0577edb581e04afd9ae4c875357@bol.com.br>; Mon, 29 Oct 2018 10:09:25 -0300 (BRT)
+Authentication-Results: a2-silver18.bol.com.br; dkim=pass reason="1024-bit key" header.d=postkarto.com.br header.i=@postkarto.com.br
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=postkarto.com.br; s=postkarto; t=1540818282; bh=4Xid4I5aMRN2ew4DhNYAbZBL/ok=; h=X-Mailer-Info:List-Unsubscribe:Subject:From:To:Date:Message-ID:
+  Precedence:X-Mailer:Sender:MIME-Version:Content-Type; b=Z+wiPyM/I/iRo8DpE7iJtZAkmfQz3waQvIMv7Zu3Q64nGoD7nDicLefv0Q862Q0ny
+  /Bh+ItcSo/27/AeBgcYMaIuiH+lO7NMUvRCDpORLG3OT4ZgjHwSOQ5Lb0hiQmJe1pi
+  PE+s40p0b7ZLWiZi9ZJP+zDMEg+/7DMaBoxL+6D0=
+X-Mailer-Info: 3.ANwIzN.kVmZhVHb0JDM0QTN.Y2ZhN3clN3cvJXahBkYvxmLj9WbuImc.QNzcjMkFWZ10CMjRjYtQjMllTLhhDZ40iM3U2N1QTOxkzNwgjO5Y2YwczY4ATLyITYw0CNlVTNtgjM5cTLjRmM3EzMhdTMlNzM
+List-Unsubscribe: <http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/unsubscribe/9fc07c80-22a0-4e55-8297-cd2713a71e33>, <mailto:return-4027-default20445-795593-3d8d2a=2u@postkarto.com.br>
+Subject: Fisconet News nº 147
+From: Fisconet News <news@fisconet.com.br>
+To: bf2ae0577edb581e04afd9ae4c875357@bol.com.br
+Date: 29 Oct 2018 13:04:42 -0000
+Message-ID: <mid-1979ee2a61d44f2169ae1807b1ea7925@postkarto.com.br>
+Precedence: bulk
+X-Mailer: Postkarto
+Sender: news=fisconet.com.br@postkarto.com.br
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="==d4354b31aff3dac150c028a8f46e0738"
+X-AS-Analysis: v=2.2 cv=Y4i6iVWN c=1 sm=1 tr=0 a=PLlJxnviW/vVA5X/s8uj3g==:117 a=PLlJxnviW/vVA5X/s8uj3g==:17 a=-uNXE31MpBQA:10 a=r77TgQKjGQsHNAKrUKIA:9 a=ayl13fNZAAAA:8 a=a85FE30QAAAA:8 a=SPN_GGc5AAAA:8 a=XXcefqaHAAAA:8 a=RVPkx80rAAAA:8 a=HbKoja1oE7Z3l5_SsVoA:9 a=QEXdDO2ut3YA:10 a=jjhMih4jgVYA:10 a=ZjNHGSnVNNQA:10 a=v_zEuWSDI-0A:10 a=s_jPKNKZjv4A:10 a=jpXTW6UBsQsA:10 a=rnVpnhDxKTEA:10 a=AnTAyR0Sc3kA:10 a=QM_rZJlr_vQA:10 a=8HU-_ZhKe-oA:10 a=SSmOFEACAAAA:8 a=z722xOiIAAAA:20 a=v6dmHlo3AAAA:20 a=ufv9q-bKsIKqqsUpfVEA:9 a=KzNbFdn1X2IzutVa:21 a=_W_S_7VecoQA:10 a=frz4AuCg-hUA:10 a=_TBa-n1RsCm9yRvd7kuH:22 a=034BFi4BMXmlOIsZpdw8:22 a=T4MUOnMzqPdTCotb-0CA:22 a=VvGgpE5gCOXd2rNm3ymF:22
+
+--==d4354b31aff3dac150c028a8f46e0738
+Content-Type: text/plain; charset=UTF-8
+
+n° 147, publicada em 29 de outubro de 2018, na cidade de Porto
+Alegre/RS.
+
+Newsletter FiscoNet
+
+Coleção Trabalhista
+
+Matérias
+
+•
+
+Empregado Mensalista 2018 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/empregado-mensalista-2018/44044 )
+
+
+Contrato Teletrabalho 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/contrato-teletrabalho-/44024 )
+
+
+DCTFWeb - Perguntas Frequentes 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/dctfweb---perguntas-frequentes/44021 )
+
+
+eSocial - Desligamento de Empregados – Aviso prévio -
+Reintegração 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/esocial---desligamento-de-empregados-%E2%80%93-aviso-previo---reintegracao/44014 )
+
+
+Moradia do Empregado 2018 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/moradia-do-empregado-2018/44012 )
+
+
+Banco de Horas - Reforma Trabalhista
+
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/banco-de-horas---reforma-trabalhista/44013 )
+
+
+Notícias
+
+•
+
+Direito a folgas para quem trabalha na eleição vale também para o
+segundo turno 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/direito-a-folgas-para-quem-trabalha-na-eleicao-vale-tambem-para-o-segundo-turno/44051 )
+
+
+EPIs deverão ser adaptados para pessoas com deficiência 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/epis-deverao-ser-adaptados-para-pessoas-com-deficiencia/44050 )
+
+
+Novo perfil de procuração para acesso à EFD-REINF 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/novo-perfil-de-procuracao-para-acesso-a-efd-reinf/44027 )
+
+
+Legislação
+
+•
+
+Portaria MTb nº 876, de 24.10.2018 - DOU de 25.10.2018 - Rep. DOU
+de 26.10.2018 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/portaria-mtb-n%C2%BA-876--de-24-10-2018---dou-de-25-10-2018---rep--dou-de-26-10-2018/44053 )
+
+
+Portaria MTb nº 877, de 24.10.2018 - DOU de 25.10.2018 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/portaria-mtb-n%C2%BA-877--de-24-10-2018---dou-de-25-10-2018/44042 )
+
+
+Portaria MTb nº 876, de 24.10.2018 - DOU de 25.10.2018 
+( http://www.fisconet.com.br/colecao-trabalhista/conteudo/portaria-mtb-n%C2%BA-876--de-24-10-2018---dou-de-25-10-2018/44041 )
+
+
+Coleção Contábil
+
+Matérias
+
+•
+
+Permuta de Ativos e Passivos no Lucro Real 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/permuta-de-ativos-e-passivos-no-lucro-real/44031 )
+
+
+Permuta de Imóveis no Lucro Real - Outubro 2018 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/permuta-de-imoveis-no-lucro-real---outubro-2018/44011 )
+
+
+Legislação
+
+•
+
+Síntese diária da Legislação Federal - 26/10/2018 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/sintese-diaria-da-legislacao-federal---26-10-2018/44052 )
+
+
+Síntese diária da Legislação Federal - 25/10/2018 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/sintese-diaria-da-legislacao-federal---25-10-2018/44040 )
+
+
+Síntese diária da Legislação Federal - 24/10/2018 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/sintese-diaria-da-legislacao-federal---24-10-2018/44035 )
+
+
+Síntese diária da Legislação Federal - 23/10/2018 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/sintese-diaria-da-legislacao-federal---23-10-2018/44026 )
+
+
+Síntese diária da Legislação Federal - 22/10/2018 
+( http://www.fisconet.com.br/colecao-contabil/conteudo/sintese-diaria-da-legislacao-federal---22-10-2018/44015 )
+
+
+Coleção Fiscal
+
+Matérias
+
+ICMS - MT
+
+•
+
+Amostra Grátis 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/amostra-gratis/44063 )
+
+
+ICMS - MG
+
+•
+
+Farinha de Mandioca 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/farinha-de-mandioca/44054 )
+
+
+ICMS - BA
+
+•
+
+Alho - Tratamento Tributário 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/alho---tratamento-tributario/44062 )
+
+
+ICMS - ES
+
+•
+
+Diferencial de Alíquotas 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/diferencial-de-aliquotas/44064 )
+
+
+Notícias
+
+•
+
+Fecomércio-RS solicita prazo maior para implantar nota fiscal
+eletrônica 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/fecomercio-rs-solicita-prazo-maior-para-implantar-nota-fiscal-eletronica/43977 )
+
+
+Alteração da Não Incidência ICMS 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/alteracao-da-nao-incidencia-icms/44022 )
+
+
+Legislação
+
+RS
+
+•
+
+PORTARIA N° 505, DE 15 DE OUTUBRO DE 2018 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/portaria-n%C2%B0-505--de-15-de-outubro-de-2018/44066 )
+
+
+RESOLUÇÃO N° 017, DE 22 DE OUTUBRO DE 2018 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/resolucao-n%C2%B0-017--de-22-de-outubro-de-2018/44065 )
+
+
+INSTRUÇÃO NORMATIVA RE N° 045, DE 2018 
+( http://www.fisconet.com.br/colecao-fiscal/conteudo/instrucao-normativa-re-n%C2%B0-045--de-2018/44049 )
+
+
+SP
+
+•
+
+COMUNICADO CAT N° 012 / 2018 - Fixa as datas para cumprimento das
+obrigações principais e acessórias para o mês de novembro de
+2018. 
+( http://info.fazenda.sp.gov.br/NXT/gateway.dll/legislacao_tributaria/comunicados_cat/ccat122018.htm )
+
+
+RJ
+
+•
+
+DECRETO N° 46.478 / 2018 - Altera o Decreto nº 26.789/2000, que
+estabelece condições para a fruição do diferimento e da dilatação
+de prazo de pagamento do ICMS, em função da revogação do Decreto
+nº 26.271/ 2000. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335384%21%21DECRETO%2BN%25C2%25BA%2B46478%2BDE%2B25%2BDE%2BOUTUBRO%2BDE%2B2018 )
+
+
+PORTARIA SSER N° 168 / 2018 - Completa a relação dos benefícios
+fiscais destinados à reinstituição nos moldes do Anexo Único do
+Convênio ICMS 190/2017. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335342%21%21PORTARIA%2BSSER%2BN.%25C2%25BA%2B168%2BDE%2B24%2BDE%2BOUTUBRO%2BDE%2B2018 )
+
+
+PORTARIA SUT N° 177 / 2018 - Fornece dados para o cálculo do ICMS
+nas operações interestaduais com café cru, no período de
+22.10.2018 a 28.10.2018. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335256%21%21PORTARIA%2BSUT%2BN%25C2%25BA%2B177%2BDE%2B22%2BDE%2BOUTUBRO%2BDE%2B2018 )
+
+
+PORTARIA SUT N° 176 / 2018 - Altera o Manual de Diferimento,
+Ampliação de Prazo de Recolhimento, Suspensão e de Incentivos
+Fiscais e Benefícios de Natureza Tributária aprovado pelo Decreto
+n° 27.815/2001. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335255%21%21PORTARIA%2BSUT%2BN%25C2%25BA%2B176%2BDE%2B19%2BDE%2BOUTUBRO%2BDE%2B2018%25E2%2580%258B )
+
+
+RESOLUÇÃO SEFAZ N° 333 / 2018 - Disciplina os procedimentos
+quanto ao Decreto n° 46.453/2018, que regulamenta a redução de
+multas e juros relativos aos débitos tributários de ICMS,
+inscritos ou não em dívida ativa, bem como multas impostas pelo
+TCE/RJ inscritas em dívida ativa, e autorização para pagamento ou
+parcelamento. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335166%21%21RESOLU%25C3%2587%25C3%2583O%2BSEFAZ%2BN%25C2%25BA%2B333%2BDE%2B19%2BDE%2BOUTUBRO%2BDE%2B2018 )
+
+
+RESOLUÇÃO SEFAZ N° 329 / 2018 - Prorroga o prazo para entrega das
+Guias de Informação e Apuração do ICMS (GIA-ICMS), relativas aos
+meses de agosto e setembro de 2018. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335165%21%21RESOLU%25C3%2587%25C3%2583O%2BSEFAZ%2BN%25C2%25BA%2B329%2BDE%2B18%2BDE%2BOUTUBRO%2BDE%2B2018 )
+
+
+DECRETO N° 46.469 / 2018 - Altera o Decreto n° 46.453/2018, que
+regulamenta a redução de multas e juros relativos aos débitos
+tributários de ICMS, inscritos ou não em dívida ativa, bem como
+multas impostas pelo TCE/RJ inscritas em dívida ativa, e
+autorização para pagamento ou parcelamento. 
+( http://www.fazenda.rj.gov.br/sefaz/faces/owResource.jspx?z=oracle.webcenter.doclib%21%21UCMServer%2523dDocName%253AWCC335164%21%21DECRETO%2BN%25C2%25BA%2B46469%2BDE%2B19%2BDE%2BOUTUBRO%2BDE%2B2018 )
+
+
+MG
+
+•
+
+PORTARIA SUTRI N° 779 / 2018 - Altera a Portaria SUTRI n°
+743/2018, que divulga os preços médios ponderados a consumidor
+final (PMPF) para cálculo do ICMS devido por substituição
+tributária nas operações com cerveja e chope. 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/portarias/2018/port_sutri779_2018.htm )
+
+
+PORTARIA SUTRI N° 778 / 2018 - Altera a Portaria SUTRI nº
+737/2018, que dispõe sobre os estabelecimentos credenciados como
+fabricantes de bens e mercadorias em escala industrial não
+relevante, para fins de inaplicabilidade do regime de
+substituição tributária. 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/portarias/2018/port_sutri778_2018.htm )
+
+
+DECRETO N° 47.520 / 2018 - Dispõe sobre a fruição de desconto
+para o recolhimento antecipado do ICMS devido nas prestações
+próprias dos prestadores de serviço de comunicação na modalidade
+telefonia, realizadas em novembro e dezembro de 2018. 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/decretos/2018/d47520_2018.htm )
+
+
+PORTARIA SUTRI N° 777 / 2018 - Altera a Portaria SUTRI n°
+693/2017, que divulga preços médios ponderados a consumidor final
+(PMPF) para cálculo do ICMS devido por substituição tributária
+nas operações com acumuladores elétricos de chumbo, do tipo
+utilizado para o arranque dos motores de pistão (baterias). 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/portarias/2018/port_sutri777_2018.htm )
+
+
+PORTARIA SUTRI N° 776 / 2018 - Altera a Portaria SUTRI nº
+763/2018, que dispõe sobre estabelecimentos enquadrados nas
+categorias de fabricante de veículos e de industrial sistemista,
+para efeitos do ciclo econômico do setor automotivo. 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/portarias/2018/port_sutri776_2018.htm )
+
+
+PORTARIA SUTRI N° 775 / 2018 - Altera a Portaria nº 605/2016, que
+divulga relação de estabelecimentos industriais fabricantes deste
+Estado credenciados para receber mercadoria com diferimento e
+promover a saída interestadual com isenção ou com redução de base
+de cálculo do ICMS. 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/portarias/2018/port_sutri775_2018.htm )
+
+
+DECRETO N° 47.519 / 2018 - Altera o prazo de recolhimento do ICMS
+de responsabilidade de produtor nacional de combustíveis, situado
+em Minas Gerais, nos Estados da Bahia, do Rio de Janeiro e de
+São, relativamente às operações realizadas nos meses 10 e
+11/2018. 
+( http://www.fazenda.mg.gov.br/empresas/legislacao_tributaria/decretos/2018/d47519_2018.htm )
+
+
+ES
+
+•
+
+PORTARIA N° 032-R / 2018 - Altera as Portarias nº 010-R/2018,
+015-R/2018 e 022-R/2018, que credenciam empresas sediadas no
+Estado do Espírito Santo como contribuintes substitutos, para
+recolhimento do imposto devido nas operações com mercadorias
+sujeitas ao regime de substituição tributária que especifica. 
+( http://www.sefaz.es.gov.br/LegislacaoOnline/lpext.dll/InfobaseLegislacaoOnline/portarias/2018/port32-r.htm?fn=document-frame.htm&f=templates&2.0 )
+
+
+Agenda Tributária
+
+Dia 29.10.2018
+
+•
+
+Sem obrigações para este dia.
+
+Dia 30.10.2018
+
+•
+
+Sem obrigações para este dia.
+
+Dia 31.10.2018
+
+•
+
+IRPF – Declaração de Ajuste Anual - Recolhimento
+
+PIS/COFINS – Retenção
+
+IRRF - Rendimentos de Capital - Fundos de Investimentos
+Imobiliários - Rendimentos e Ganhos de Capital
+
+IRPF - Carnê-Leão
+
+IRPF Lucro na alienação de bens ou direitos
+
+IRPF - Renda variável
+
+IRPJ Renda variável
+
+IRPJ - Estimativa Antecipação Mensal
+
+CSLL - Estimativa Antecipação mensal
+
+IRPJ/SIMPLES Nacional Lucro na alienação de ativos
+
+IRPJ Lucro inflacionário
+
+IRPJ Apuração trimestral
+
+CSLL Apuração trimestral
+
+REFIS
+
+PAES – PJ
+
+PAEX
+
+PAES - PF
+
+PAES - ITR
+
+Parcelamento Especial do Simples Nacional
+
+Parcelamento Simples Nacional
+
+Parcelamento Especial da Lei nº 11.941/2009
+
+Parcelamento - Lei nº 11.941/2009 - Reabertura
+
+Parcelamento - Lei nº 12.865/2013
+
+Parcelamento - Lei nº 12.865/2013
+
+Parcelamento - Lei nº 12.996/2014, Art. 2º
+
+Parcelamento Especial do SIMPLES Nacional 2017
+
+Parcelamento – Programa de Regularização Tributária (PRT)
+
+Programa de Regularização Tributária Rural – PRR
+
+PERT – Parcela
+
+INSS - Parcelamento para Ingresso no Regime do Simples Nacional
+
+REDOM - Programa de Recuperação Previdenciária dos Empregadores
+Domésticos
+
+SISCOSERV - Registro de Faturamento (RF) - Registro de Pagamento
+(RP)
+
+SISCOSERV - Registro de Vendas (RVS) - Registro de Aquisição
+(RAS)
+
+Declaração de Operações Imobiliárias (DOI)
+
+DME – Declaração de Operações Liquidadas com Moeda em Espécie
+
+ITR
+
+DIF - Cigarros
+
+Contribuição Sindical dos Empregados
+
+OBS
+
+Dia 01.11.2018
+
+•
+
+INSS - GPS
+
+Dia 02.11.2018
+
+•
+
+Sem obrigações para este dia.
+
+
+--==d4354b31aff3dac150c028a8f46e0738
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" style="">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>FiscoNet</title>
+        <style type="text/css">
+            body { width: 100% !important; }
+            body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; padding:0; margin:0;  }
+            p { margin: 0; }
+            table td {border-collapse: collapse !important;}
+            img { border:0; height:auto; outline:none; text-decoration:none; max-width:100%; }
+            table { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+            img { -ms-interpolation-mode: bicubic;  }
+            #outlook a {padding:0;}
+            .ExternalClass { width: 100%; }
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div{ line-height: 100%;}
+            .appleLinks a {color:#000000; text-decoration:none;} 
+            @media screen and (min-width: 601px) {
+            	.container { width: 650px !important; }
+            }
+			@media screen and (min-width: 590px) {
+            	td.m-auto { width: auto !important;}
+            }
+			@media only screen and (max-width:480px) {
+				table.m-full { width:100% !important;}
+				td.m-center { text-align:center !important;}
+				td.m-hide { display:none !important;}
+				td.m-right { text-align:right !important;}
+				td.t-padding { padding-top: 20px !important; }
+				td.b-padding { padding-bottom: 10px !important; } 
+				td.coll { width: 100% !important; display: block !important; } 
+				td.l-padding { padding-right:20px !important; padding-left:20px !important }
+				td.nl-padding { padding-right:0 !important; padding-left:0 !important }
+            }
+        </style>
+    <style>body {
+width: 100% !important;
+}
+body {
+-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; padding: 0; margin: 0;
+}
+img {
+border: 0; height: auto; outline: none; text-decoration: none; max-width: 100%;
+}
+img {
+-ms-interpolation-mode: bicubic;
+}
+.ExternalClass {
+width: 100%;
+}
+.ExternalClass {
+line-height: 100%;
+}
+</style></head>
+    <body style="background-color: rgb(255, 255, 255); cursor: auto; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;" bgcolor="#ffffff">      <div style="display: none; font-size: 1px; color: #333333; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;"> 
+        
+      </div>
+<img height="1" width="1" src="https://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/opens/9fc07c80-22a0-4e55-8297-cd2713a71e33" style="height: auto; outline: none; text-decoration: none; max-width: 100%; -ms-interpolation-mode: bicubic; border: 0;" />
+        <table style="table-layout: fixed; background-color: #FFFFFF; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF">
+            <tbody>
+<tr>
+                <td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 20px 0;" valign="top" align="center">
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table width="650" align="center" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td>
+                                <![endif]-->
+                                <table style="width: 100%; max-width: 650; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" class="container" cellspacing="0" cellpadding="0" border="0" align="center">
+                                   <tbody>
+<tr>
+                                        <td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 30px; border: 1px solid #f2f2f2;" class="tp-layout" valign="top" align="left">
+                                        	<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; color: #666666; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 30px;" valign="middle" align="left">
+                                        				<div class="tp-edit">
+<img src="http://media.tplsrv.net/4027/ztqJIlBVTZqDNi01xEJ2_Fisconet%20News%201.png" alt="" class="tp-edit" style="height: auto; outline: none; text-decoration: none; max-width: 100%; -ms-interpolation-mode: bicubic; border: 0;" /><br /> n° 147, publicada em 29 de outubro de 2018, na cidade de Porto Alegre/RS.</div>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="font-family: Helvetica, Arial, sans-serif; color: #333333; font-size: 30px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 5px;" valign="middle" align="left">
+                                        				<span style="font-weight: bold;"><div class="tp-edit">Newsletter FiscoNet</div></span><br />
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	
+                                        	<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="font-family: Helvetica, Arial, sans-serif; color: #000000; font-size: 22px; font-weight: bold; border-bottom-width: 1px; border-bottom-color: #f6f6f6; border-bottom-style: solid; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 5px;" valign="top" align="left">
+														<div class="tp-edit">Coleção Trabalhista</div>
+													</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 30px;" valign="top" align="center">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr>
+																<td style="font-size: 1px; line-height: 1px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0;" height="1" bgcolor="#999999"> </td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Matérias</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<a title="Empregado Mensalista 2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9lbXByZWdhZG8tbWVuc2FsaXN0YS0yMDE4LzQ0MDQ0/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Empregado Mensalista 2018</a><br /><p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Contrato Teletrabalho " href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9jb250cmF0by10ZWxldHJhYmFsaG8tLzQ0MDI0/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Contrato Teletrabalho</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="DCTFWeb - Perguntas Frequentes" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9kY3Rmd2ViLS0tcGVyZ3VudGFzLWZyZXF1ZW50ZXMvNDQwMjE%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">DCTFWeb - Perguntas Frequentes</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="eSocial - Desligamento de Empregados – Aviso prévio - Reintegração" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9lc29jaWFsLS0tZGVzbGlnYW1lbnRvLWRlLWVtcHJlZ2Fkb3MtJUUyJTgwJTkzLWF2aXNvLXByZXZpby0tLXJlaW50ZWdyYWNhby80NDAxNA%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">eSocial - Desligamento de Empregados – Aviso prévio - Reintegração</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Moradia do Empregado 2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9tb3JhZGlhLWRvLWVtcHJlZ2Fkby0yMDE4LzQ0MDEy/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Moradia do Empregado 2018</a></p>
+<br /><a title="Banco de Horas - Reforma Trabalhista" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9iYW5jby1kZS1ob3Jhcy0tLXJlZm9ybWEtdHJhYmFsaGlzdGEvNDQwMTM%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Banco de Horas - Reforma Trabalhista<br /></a>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Notícias</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<a title="Direito a folgas para quem trabalha na eleição vale também para o segundo turno" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9kaXJlaXRvLWEtZm9sZ2FzLXBhcmEtcXVlbS10cmFiYWxoYS1uYS1lbGVpY2FvLXZhbGUtdGFtYmVtLXBhcmEtby1zZWd1bmRvLXR1cm5vLzQ0MDUx/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Direito a folgas para quem trabalha na eleição vale também para o segundo turno</a><br /><p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="EPIs deverão ser adaptados para pessoas com deficiência" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9lcGlzLWRldmVyYW8tc2VyLWFkYXB0YWRvcy1wYXJhLXBlc3NvYXMtY29tLWRlZmljaWVuY2lhLzQ0MDUw/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">EPIs deverão ser adaptados para pessoas com deficiência</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Novo perfil de procuração para acesso à EFD-REINF" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9ub3ZvLXBlcmZpbC1kZS1wcm9jdXJhY2FvLXBhcmEtYWNlc3NvLWEtZWZkLXJlaW5mLzQ0MDI3/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Novo perfil de procuração para acesso à EFD-REINF</a></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Legislação</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;"><a title="Portaria MTb nº 876, de 24.10.2018 - DOU de 25.10.2018 - Rep. DOU de 26.10.2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9wb3J0YXJpYS1tdGItbiVDMiVCQS04NzYtLWRlLTI0LTEwLTIwMTgtLS1kb3UtZGUtMjUtMTAtMjAxOC0tLXJlcC0tZG91LWRlLTI2LTEwLTIwMTgvNDQwNTM%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Portaria MTb nº 876, de 24.10.2018 - DOU de 25.10.2018 - Rep. DOU de 26.10.2018</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Portaria MTb nº 877, de 24.10.2018 - DOU de 25.10.2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9wb3J0YXJpYS1tdGItbiVDMiVCQS04NzctLWRlLTI0LTEwLTIwMTgtLS1kb3UtZGUtMjUtMTAtMjAxOC80NDA0Mg%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Portaria MTb nº 877, de 24.10.2018 - DOU de 25.10.2018</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Portaria MTb nº 876, de 24.10.2018 - DOU de 25.10.2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby10cmFiYWxoaXN0YS9jb250ZXVkby9wb3J0YXJpYS1tdGItbiVDMiVCQS04NzYtLWRlLTI0LTEwLTIwMTgtLS1kb3UtZGUtMjUtMTAtMjAxOC80NDA0MQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Portaria MTb nº 876, de 24.10.2018 - DOU de 25.10.2018</a></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	
+                                        	
+                                        	
+                                        	
+                                        	
+                                        	<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="font-family: Helvetica, Arial, sans-serif; color: #000000; font-size: 22px; font-weight: bold; border-bottom-width: 1px; border-bottom-color: #f6f6f6; border-bottom-style: solid; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 5px;" valign="top" align="left">
+														<div class="tp-edit">Coleção Contábil</div>
+													</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 30px;" valign="top" align="center">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr>
+																<td style="font-size: 1px; line-height: 1px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0;" height="1" bgcolor="#999999"> </td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	
+                                        	
+                                        	<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Matérias</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;"></p>
+<a title="Permuta de Ativos e Passivos no Lucro Real" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9wZXJtdXRhLWRlLWF0aXZvcy1lLXBhc3Npdm9zLW5vLWx1Y3JvLXJlYWwvNDQwMzE%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Permuta de Ativos e Passivos no Lucro Real</a><br /><p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Permuta de Imóveis no Lucro Real - Outubro 2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9wZXJtdXRhLWRlLWltb3ZlaXMtbm8tbHVjcm8tcmVhbC0tLW91dHVicm8tMjAxOC80NDAxMQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Permuta de Imóveis no Lucro Real - Outubro 2018</a></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Legislação</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+                                        	<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<div><a title="Síntese diária da Legislação Federal - 26/10/2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9zaW50ZXNlLWRpYXJpYS1kYS1sZWdpc2xhY2FvLWZlZGVyYWwtLS0yNi0xMC0yMDE4LzQ0MDUy/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Síntese diária da Legislação Federal - 26/10/2018</a></div>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Síntese diária da Legislação Federal - 25/10/2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9zaW50ZXNlLWRpYXJpYS1kYS1sZWdpc2xhY2FvLWZlZGVyYWwtLS0yNS0xMC0yMDE4LzQ0MDQw/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Síntese diária da Legislação Federal - 25/10/2018</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Síntese diária da Legislação Federal - 24/10/2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9zaW50ZXNlLWRpYXJpYS1kYS1sZWdpc2xhY2FvLWZlZGVyYWwtLS0yNC0xMC0yMDE4LzQ0MDM1/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Síntese diária da Legislação Federal - 24/10/2018</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Síntese diária da Legislação Federal - 23/10/2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9zaW50ZXNlLWRpYXJpYS1kYS1sZWdpc2xhY2FvLWZlZGVyYWwtLS0yMy0xMC0yMDE4LzQ0MDI2/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Síntese diária da Legislação Federal - 23/10/2018</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Síntese diária da Legislação Federal - 22/10/2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1jb250YWJpbC9jb250ZXVkby9zaW50ZXNlLWRpYXJpYS1kYS1sZWdpc2xhY2FvLWZlZGVyYWwtLS0yMi0xMC0yMDE4LzQ0MDE1/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Síntese diária da Legislação Federal - 22/10/2018</a></p>
+<br />
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="font-family: Helvetica, Arial, sans-serif; color: #000000; font-size: 22px; font-weight: bold; border-bottom-width: 1px; border-bottom-color: #f6f6f6; border-bottom-style: solid; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 5px;" valign="top" align="left">
+														<div class="tp-edit">Coleção Fiscal</div>
+													</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 30px;" valign="top" align="center">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr>
+																<td style="font-size: 1px; line-height: 1px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0;" height="1" bgcolor="#999999"> </td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	
+                                        	
+                                        	<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Matérias</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">ICMS - MT</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;"><a title="Amostra Grátis" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vYW1vc3RyYS1ncmF0aXMvNDQwNjM%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Amostra Grátis</a></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">ICMS - MG</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit"><p style="margin: 0;"><a title="Farinha de Mandioca" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vZmFyaW5oYS1kZS1tYW5kaW9jYS80NDA1NA%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Farinha de Mandioca</a></p></div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">ICMS - BA</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;"><a title="Alho - Tratamento Tributário" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vYWxoby0tLXRyYXRhbWVudG8tdHJpYnV0YXJpby80NDA2Mg%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Alho - Tratamento Tributário</a></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">ICMS - ES</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;"><a title="Diferencial de Alíquotas" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vZGlmZXJlbmNpYWwtZGUtYWxpcXVvdGFzLzQ0MDY0/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Diferencial de Alíquotas</a></p>
+<p style="margin: 0;"></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Notícias</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;"><a title="Fecomércio-RS solicita prazo maior para implantar nota fiscal eletrônica" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vZmVjb21lcmNpby1ycy1zb2xpY2l0YS1wcmF6by1tYWlvci1wYXJhLWltcGxhbnRhci1ub3RhLWZpc2NhbC1lbGV0cm9uaWNhLzQzOTc3/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Fecomércio-RS solicita prazo maior para implantar nota fiscal eletrônica</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="Alteração da Não Incidência ICMS" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vYWx0ZXJhY2FvLWRhLW5hby1pbmNpZGVuY2lhLWljbXMvNDQwMjI%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">Alteração da Não Incidência ICMS</a></p>
+<p style="margin: 0;"></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Legislação</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+                                        	
+                                        	
+                                        	
+                                        	
+                                        	<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">RS</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<div><a title="PORTARIA N° 505, DE 15 DE OUTUBRO DE 2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vcG9ydGFyaWEtbiVDMiVCMC01MDUtLWRlLTE1LWRlLW91dHVicm8tZGUtMjAxOC80NDA2Ng%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA N° 505, DE 15 DE OUTUBRO DE 2018</a></div>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="RESOLUÇÃO N° 017, DE 22 DE OUTUBRO DE 2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vcmVzb2x1Y2FvLW4lQzIlQjAtMDE3LS1kZS0yMi1kZS1vdXR1YnJvLWRlLTIwMTgvNDQwNjU%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">RESOLUÇÃO N° 017, DE 22 DE OUTUBRO DE 2018</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a title="INSTRUÇÃO NORMATIVA RE N° 045, DE 2018" href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5maXNjb25ldC5jb20uYnIvY29sZWNhby1maXNjYWwvY29udGV1ZG8vaW5zdHJ1Y2FvLW5vcm1hdGl2YS1yZS1uJUMyJUIwLTA0NS0tZGUtMjAxOC80NDA0OQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">INSTRUÇÃO NORMATIVA RE N° 045, DE 2018</a></p>
+<br />
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">SP</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL2luZm8uZmF6ZW5kYS5zcC5nb3YuYnIvTlhUL2dhdGV3YXkuZGxsL2xlZ2lzbGFjYW9fdHJpYnV0YXJpYS9jb211bmljYWRvc19jYXQvY2NhdDEyMjAxOC5odG0%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">COMUNICADO CAT N° 012 / 2018 - Fixa as datas para cumprimento das obrigações principais e acessórias para o mês de novembro de 2018.</a><br />
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">RJ</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTM4NCUyMSUyMURFQ1JFVE8lMkJOJTI1QzIlMjVCQSUyQjQ2NDc4JTJCREUlMkIyNSUyQkRFJTJCT1VUVUJSTyUyQkRFJTJCMjAxOA%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">DECRETO N° 46.478 / 2018 - Altera o Decreto nº 26.789/2000, que estabelece condições para a fruição do diferimento e da dilatação de prazo de pagamento do ICMS, em função da revogação do Decreto nº 26.271/ 2000.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTM0MiUyMSUyMVBPUlRBUklBJTJCU1NFUiUyQk4uJTI1QzIlMjVCQSUyQjE2OCUyQkRFJTJCMjQlMkJERSUyQk9VVFVCUk8lMkJERSUyQjIwMTg%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SSER N° 168 / 2018 - Completa a relação dos benefícios fiscais destinados à reinstituição nos moldes do Anexo Único do Convênio ICMS 190/2017.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTI1NiUyMSUyMVBPUlRBUklBJTJCU1VUJTJCTiUyNUMyJTI1QkElMkIxNzclMkJERSUyQjIyJTJCREUlMkJPVVRVQlJPJTJCREUlMkIyMDE4/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUT N° 177 / 2018 - Fornece dados para o cálculo do ICMS nas operações interestaduais com café cru, no período de 22.10.2018 a 28.10.2018.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTI1NSUyMSUyMVBPUlRBUklBJTJCU1VUJTJCTiUyNUMyJTI1QkElMkIxNzYlMkJERSUyQjE5JTJCREUlMkJPVVRVQlJPJTJCREUlMkIyMDE4JTI1RTIlMjU4MCUyNThC/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUT N° 176 / 2018 - Altera o Manual de Diferimento, Ampliação de Prazo de Recolhimento, Suspensão e de Incentivos Fiscais e Benefícios de Natureza Tributária aprovado pelo Decreto n° 27.815/2001.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTE2NiUyMSUyMVJFU09MVSUyNUMzJTI1ODclMjVDMyUyNTgzTyUyQlNFRkFaJTJCTiUyNUMyJTI1QkElMkIzMzMlMkJERSUyQjE5JTJCREUlMkJPVVRVQlJPJTJCREUlMkIyMDE4/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">RESOLUÇÃO SEFAZ N° 333 / 2018 - Disciplina os procedimentos quanto ao Decreto n° 46.453/2018, que regulamenta a redução de multas e juros relativos aos débitos tributários de ICMS, inscritos ou não em dívida ativa, bem como multas impostas pelo TCE/RJ inscritas em dívida ativa, e autorização para pagamento ou parcelamento.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTE2NSUyMSUyMVJFU09MVSUyNUMzJTI1ODclMjVDMyUyNTgzTyUyQlNFRkFaJTJCTiUyNUMyJTI1QkElMkIzMjklMkJERSUyQjE4JTJCREUlMkJPVVRVQlJPJTJCREUlMkIyMDE4/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">RESOLUÇÃO SEFAZ N° 329 / 2018 - Prorroga o prazo para entrega das Guias de Informação e Apuração do ICMS (GIA-ICMS), relativas aos meses de agosto e setembro de 2018.</a></div>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLnJqLmdvdi5ici9zZWZhei9mYWNlcy9vd1Jlc291cmNlLmpzcHg_ej1vcmFjbGUud2ViY2VudGVyLmRvY2xpYiUyMSUyMVVDTVNlcnZlciUyNTIzZERvY05hbWUlMjUzQVdDQzMzNTE2NCUyMSUyMURFQ1JFVE8lMkJOJTI1QzIlMjVCQSUyQjQ2NDY5JTJCREUlMkIxOSUyQkRFJTJCT1VUVUJSTyUyQkRFJTJCMjAxOA%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">DECRETO N° 46.469 / 2018 - Altera o Decreto n° 46.453/2018, que regulamenta a redução de multas e juros relativos aos débitos tributários de ICMS, inscritos ou não em dívida ativa, bem como multas impostas pelo TCE/RJ inscritas em dívida ativa, e autorização para pagamento ou parcelamento.</a></p>
+<p style="margin: 0;"><br /></p>
+<p style="margin: 0;"></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">MG</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<div>
+<p style="margin: 0;"></p>
+<div>
+<p style="margin: 0;"></p>
+<div>
+<p style="margin: 0;"></p>
+<div>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvcG9ydGFyaWFzLzIwMTgvcG9ydF9zdXRyaTc3OV8yMDE4Lmh0bQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUTRI N° 779 / 2018 - Altera a Portaria SUTRI n° 743/2018, que divulga os preços médios ponderados a consumidor final (PMPF) para cálculo do ICMS devido por substituição tributária nas operações com cerveja e chope.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvcG9ydGFyaWFzLzIwMTgvcG9ydF9zdXRyaTc3OF8yMDE4Lmh0bQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUTRI N° 778 / 2018 - Altera a Portaria SUTRI nº 737/2018, que dispõe sobre os estabelecimentos credenciados como fabricantes de bens e mercadorias em escala industrial não relevante, para fins de inaplicabilidade do regime de substituição tributária.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvZGVjcmV0b3MvMjAxOC9kNDc1MjBfMjAxOC5odG0%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">DECRETO N° 47.520 / 2018 - Dispõe sobre a fruição de desconto para o recolhimento antecipado do ICMS devido nas prestações próprias dos prestadores de serviço de comunicação na modalidade telefonia, realizadas em novembro e dezembro de 2018.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvcG9ydGFyaWFzLzIwMTgvcG9ydF9zdXRyaTc3N18yMDE4Lmh0bQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUTRI N° 777 / 2018 - Altera a Portaria SUTRI n° 693/2017, que divulga preços médios ponderados a consumidor final (PMPF) para cálculo do ICMS devido por substituição tributária nas operações com acumuladores elétricos de chumbo, do tipo utilizado para o arranque dos motores de pistão (baterias).</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvcG9ydGFyaWFzLzIwMTgvcG9ydF9zdXRyaTc3Nl8yMDE4Lmh0bQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUTRI N° 776 / 2018 - Altera a Portaria SUTRI nº 763/2018, que dispõe sobre estabelecimentos enquadrados nas categorias de fabricante de veículos e de industrial sistemista, para efeitos do ciclo econômico do setor automotivo.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvcG9ydGFyaWFzLzIwMTgvcG9ydF9zdXRyaTc3NV8yMDE4Lmh0bQ%3D%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA SUTRI N° 775 / 2018 - Altera a Portaria nº 605/2016, que divulga relação de estabelecimentos industriais fabricantes deste Estado credenciados para receber mercadoria com diferimento e promover a saída interestadual com isenção ou com redução de base de cálculo do ICMS.</a></div>
+<p style="margin: 0;"><br /></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5mYXplbmRhLm1nLmdvdi5ici9lbXByZXNhcy9sZWdpc2xhY2FvX3RyaWJ1dGFyaWEvZGVjcmV0b3MvMjAxOC9kNDc1MTlfMjAxOC5odG0%3D/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">DECRETO N° 47.519 / 2018 - Altera o prazo de recolhimento do ICMS de responsabilidade de produtor nacional de combustíveis, situado em Minas Gerais, nos Estados da Bahia, do Rio de Janeiro e de São, relativamente às operações realizadas nos meses 10 e 11/2018.</a></div>
+</div>
+</div>
+</div>
+</div>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">ES</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<div><a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/clicks/aHR0cDovL3d3dy5zZWZhei5lcy5nb3YuYnIvTGVnaXNsYWNhb09ubGluZS9scGV4dC5kbGwvSW5mb2Jhc2VMZWdpc2xhY2FvT25saW5lL3BvcnRhcmlhcy8yMDE4L3BvcnQzMi1yLmh0bT9mbj1kb2N1bWVudC1mcmFtZS5odG0mZj10ZW1wbGF0ZXMmMi4w/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" rel="noopener noreferrer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;">PORTARIA N° 032-R / 2018 - Altera as Portarias nº 010-R/2018, 015-R/2018 e 022-R/2018, que credenciam empresas sediadas no Estado do Espírito Santo como contribuintes substitutos, para recolhimento do imposto devido nas operações com mercadorias sujeitas ao regime de substituição tributária que especifica.</a></div>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="font-family: Helvetica, Arial, sans-serif; color: #000000; font-size: 22px; font-weight: bold; border-bottom-width: 1px; border-bottom-color: #f6f6f6; border-bottom-style: solid; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 5px;" valign="top" align="left">
+														<div class="tp-edit">Agenda Tributária</div>
+													</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	<table class="tp-block" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 30px;" valign="top" align="center">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr>
+																<td style="font-size: 1px; line-height: 1px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0;" height="1" bgcolor="#999999"> </td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Dia 29.10.2018</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">Sem obrigações para este dia.<br />
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Dia 30.10.2018</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;">Sem obrigações para este dia.</p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Dia 31.10.2018</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<div>
+<p style="margin: 0;">IRPF – Declaração de Ajuste Anual - Recolhimento</p>
+<p style="margin: 0;">PIS/COFINS – Retenção</p>
+<p style="margin: 0;">IRRF - Rendimentos de Capital - Fundos de Investimentos Imobiliários - Rendimentos e Ganhos de Capital</p>
+<p style="margin: 0;">IRPF - Carnê-Leão</p>
+<p style="margin: 0;">IRPF Lucro na alienação de bens ou direitos</p>
+<p style="margin: 0;">IRPF - Renda variável</p>
+<p style="margin: 0;">IRPJ Renda variável</p>
+<p style="margin: 0;">IRPJ - Estimativa Antecipação Mensal</p>
+<p style="margin: 0;">CSLL - Estimativa Antecipação mensal</p>
+<p style="margin: 0;">IRPJ/SIMPLES Nacional Lucro na alienação de ativos</p>
+<p style="margin: 0;">IRPJ Lucro inflacionário</p>
+<p style="margin: 0;">IRPJ Apuração trimestral</p>
+<p style="margin: 0;">CSLL Apuração trimestral</p>
+<p style="margin: 0;">REFIS</p>
+<p style="margin: 0;">PAES – PJ</p>
+<p style="margin: 0;">PAEX</p>
+<p style="margin: 0;">PAES - PF</p>
+<p style="margin: 0;">PAES - ITR</p>
+<p style="margin: 0;">Parcelamento Especial do Simples Nacional</p>
+<p style="margin: 0;">Parcelamento Simples Nacional</p>
+<p style="margin: 0;">Parcelamento Especial da Lei nº 11.941/2009</p>
+<p style="margin: 0;">Parcelamento - Lei nº 11.941/2009 - Reabertura</p>
+<p style="margin: 0;">Parcelamento - Lei nº 12.865/2013</p>
+<p style="margin: 0;">Parcelamento - Lei nº 12.865/2013</p>
+<p style="margin: 0;">Parcelamento - Lei nº 12.996/2014, Art. 2º</p>
+<p style="margin: 0;">Parcelamento Especial do SIMPLES Nacional 2017</p>
+<p style="margin: 0;">Parcelamento – Programa de Regularização Tributária (PRT)</p>
+<p style="margin: 0;">Programa de Regularização Tributária Rural – PRR</p>
+<p style="margin: 0;">PERT – Parcela</p>
+<p style="margin: 0;">INSS - Parcelamento para Ingresso no Regime do Simples Nacional</p>
+<p style="margin: 0;">REDOM - Programa de Recuperação Previdenciária dos Empregadores Domésticos</p>
+<p style="margin: 0;">SISCOSERV - Registro de Faturamento (RF) - Registro de Pagamento (RP)</p>
+<p style="margin: 0;">SISCOSERV - Registro de Vendas (RVS) - Registro de Aquisição (RAS)</p>
+<p style="margin: 0;">Declaração de Operações Imobiliárias (DOI)</p>
+<p style="margin: 0;">DME – Declaração de Operações Liquidadas com Moeda em Espécie</p>
+<p style="margin: 0;">ITR</p>
+<p style="margin: 0;">DIF - Cigarros</p>
+<p style="margin: 0;">Contribuição Sindical dos Empregados</p>
+<p style="margin: 0;">OBS</p>
+</div>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Dia 01.11.2018</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit"><p style="margin: 0;">INSS - GPS</p></div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+													<td style="color: #9E7F46; font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+														<div class="tp-edit"><p style="margin: 0;">Dia 02.11.2018</p></div>
+													</td>
+												</tr>
+                                        	</tbody>
+</table>
+<table class="tp-block" style="opacity: 1; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        		<tbody>
+<tr>
+                                        			<td style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 20px;" valign="top" align="left">
+                                        				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+                                        					<tbody>
+<tr class="tp-repeat">
+																<td style="color: #333333; font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 10px 10px 0;" valign="top" align="left">
+																	•
+																</td>
+																<td style="color: #333333; font-size: 14px; font-family: Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 0 0 10px;" valign="top" align="left"><div class="tp-edit">
+<p style="margin: 0;"></p>
+<p style="margin: 0;">Sem obrigações para este dia.</p>
+<p style="margin: 0;"></p>
+</div></td>
+															</tr>
+                                        				</tbody>
+</table>
+                                        			</td>
+                                        		</tr>
+                                        	</tbody>
+</table>
+                                        	
+                                        	
+                                        </td>
+                                    </tr>
+                            </tbody>
+</table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                     </tr>
+                   </table>
+                   <![endif]--> 
+                </td>
+            </tr>
+        </tbody>
+</table>
+	        <table cellpadding="0" cellspacing="0" width="100%" border="0" bgcolor="#ddd" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; margin: 0; padding: 0;">
+          <tr>
+            <td height="30" style="background-color: #ddd; font-family: Arial, Helvetica, Sans-serif; font-size: 12px; color: #23242b; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; border-collapse: collapse !important; margin: 0; padding: 15px 0;" align="center" bgcolor="#ddd">
+              Caso não queira mais receber nossas mensagens, <a href="http://tracking.postkarto.com.br/5372dae5-0c4b-42e9-a8d8-27e754919708/unsubscribe/9fc07c80-22a0-4e55-8297-cd2713a71e33" target="_blank" style="color: #23242b; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; padding: 0;"><span style="color: #23242b;">acesse aqui e faça o descadastro automático</span></a>.
+            </td>
+          </tr>
+        </table>
+</body>
+</html>
+
+
+--==d4354b31aff3dac150c028a8f46e0738--
+
+--3d7f9dfde9033c81f88b313548a712c8bddc515cd137be3101a93c020352--
